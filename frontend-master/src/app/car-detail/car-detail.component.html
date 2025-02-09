@@ -1,0 +1,193 @@
+<div class="car-detail-container" *ngIf="carData">
+  <!-- Image Gallery Section -->
+  <div class="image-gallery">
+    <div class="main-image">
+      <img [src]="carData.imageUrls[currentImageIndex]" 
+           [alt]="carData.carMake + ' ' + carData.carModel"
+           loading="lazy"
+           (click)="openImagePopup(currentImageIndex)" />
+      <div class="image-controls">
+        <button class="nav-btn prev" 
+                (click)="prevImage()" 
+                *ngIf="carData.imageUrls.length > 1"
+                title="Previous image">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-btn next" 
+                (click)="nextImage()" 
+                *ngIf="carData.imageUrls.length > 1"
+                title="Next image">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="thumbnail-strip" *ngIf="carData.imageUrls.length > 1">
+      <div class="thumbnails">
+        <img *ngFor="let img of carData.imageUrls; let i = index" 
+             [src]="img" 
+             [class.active]="i === currentImageIndex"
+             (click)="setImage(i)" 
+             [alt]="'Thumbnail ' + (i + 1)"
+             loading="lazy"
+             [title]="'View image ' + (i + 1)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Car Information Section -->
+  <div class="car-info-section">
+    <!-- Header with Title and Location -->
+    <div class="header-section">
+      <h1 class="car-title">
+        <span class="make-model">{{carData.carMake}} {{carData.carModel}}</span>
+        <span class="variant">{{carData.variant}}</span>
+      </h1>
+      <div class="sub-info">
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          {{carData.vehicleLocation}}
+        </div>
+        <div class="kms">
+          <i class="fas fa-road"></i>
+          {{carData.kms | number}} km
+        </div>
+      </div>
+      <div class="price-container">
+        <span class="price">₹{{carData.expectedPrice | number}}</span>
+        <button class="estimate-btn" (click)="getEstimatedPrice()">
+          <i class="fas fa-chart-line"></i>
+          Check Market Price
+        </button>
+      </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="specifications-section">
+      <h2>Specifications</h2>
+      <div class="specs-grid">
+        <div class="spec-item">
+          <i class="fas fa-calendar-alt"></i>
+          <div class="spec-details">
+            <label>Year</label>
+            <span>{{carData.manufactureYear}}</span>
+          </div>
+        </div>
+        <div class="spec-item">
+          <i class="fas fa-gas-pump"></i>
+          <div class="spec-details">
+            <label>Fuel Type</label>
+            <span>{{carData.fuelType}}</span>
+          </div>
+        </div>
+        <div class="spec-item">
+          <i class="fas fa-cog"></i>
+          <div class="spec-details">
+            <label>Transmission</label>
+            <span>{{carData.transmissionType}}</span>
+          </div>
+        </div>
+        <div class="spec-item">
+          <i class="fas fa-car"></i>
+          <div class="spec-details">
+            <label>Body Type</label>
+            <span>{{carData.bodyType}}</span>
+          </div>
+        </div>
+        <div class="spec-item">
+          <i class="fas fa-user"></i>
+          <div class="spec-details">
+            <label>Owners</label>
+            <span>{{carData.numberOfOwners}} Owner{{carData.numberOfOwners > 1 ? 's' : ''}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="description-section">
+      <h2>Description</h2>
+      <p>{{carData.description}}</p>
+    </div>
+
+    <!-- Action Section -->
+    <div class="action-section">
+      <div class="bidding-section" *ngIf="carData.biddingAllowed">
+        <h3>Place Your Bid</h3>
+        <div class="bid-input-group">
+          <input type="number" 
+                 [(ngModel)]="bidAmount" 
+                 placeholder="Enter your bid amount"
+                 [min]="minBidAmount"
+                 class="bid-input">
+          <button (click)="submitBid()" 
+                  [disabled]="!isValidBid()"
+                  class="bid-button">
+            <i class="fas fa-gavel"></i> Place Bid
+          </button>
+        </div>
+        <p class="bid-note">Minimum bid amount: ₹{{minBidAmount | number}}</p>
+      </div>
+
+      <button class="interest-button" (click)="showInterest()" [disabled]="loading">
+        <i class="fas fa-heart"></i> Show Interest
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Price Estimate Modal -->
+<div class="modal" *ngIf="showEstimateModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Price Analysis</h2>
+      <button class="close-btn" (click)="closeEstimateModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div *ngIf="loading" class="loading-spinner">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <p>Analyzing market data...</p>
+      </div>
+      
+      <ng-container *ngIf="!loading">
+        <div class="ai-estimate">
+          <h3>AI Price Estimation</h3>
+          <div class="estimate-text" [innerHTML]="estimatedPrice | formatEstimate"></div>
+        </div>
+        
+        <div class="market-analysis">
+          <p class="analysis-note">
+            Based on current market trends, location, and vehicle condition
+          </p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<!-- Image Popup -->
+<div class="image-popup" *ngIf="showImagePopup" (click)="closeImagePopup()">
+  <img [src]="carData.imageUrls[currentImageIndex]" 
+       [alt]="carData.carMake + ' ' + carData.carModel"
+       class="popup-image"
+       (click)="$event.stopPropagation()" />
+  
+  <div class="popup-controls">
+    <button class="popup-nav-btn" 
+            (click)="prevImage(); $event.stopPropagation()" 
+            *ngIf="carData.imageUrls.length > 1">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="popup-nav-btn" 
+            (click)="nextImage(); $event.stopPropagation()" 
+            *ngIf="carData.imageUrls.length > 1">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+  
+  <button class="close-popup" (click)="closeImagePopup(); $event.stopPropagation()">
+    <i class="fas fa-times"></i>
+  </button>
+</div>

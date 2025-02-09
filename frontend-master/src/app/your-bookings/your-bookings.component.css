@@ -1,0 +1,182 @@
+.bookings-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 24px;
+  color: #1a237e;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+}
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.booking-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+}
+
+.booking-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid;
+}
+
+.booking-header.pending {
+  background: #fff8e1;
+  border-color: #ffc107;
+}
+
+.booking-header.accepted {
+  background: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.booking-header.rejected {
+  background: #ffebee;
+  border-color: #f44336;
+}
+
+.status-badge {
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.booking-header.pending .status-badge {
+  background: #ffc107;
+  color: #fff;
+}
+
+.booking-header.accepted .status-badge {
+  background: #4caf50;
+  color: #fff;
+}
+
+.booking-header.rejected .status-badge {
+  background: #f44336;
+  color: #fff;
+}
+
+.booking-content {
+  padding: 1.5rem;
+}
+
+.car-info h4 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.car-info h4 i {
+  color: #2196f3;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-item .label {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.info-item .value {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.info-item .value.highlight {
+  color: #2196f3;
+  font-weight: 600;
+}
+
+.status-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.status-message.pending {
+  background: #fff8e1;
+  color: #f57c00;
+}
+
+.status-message.accepted {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-message.rejected {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.status-message i {
+  font-size: 1.2rem;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.no-bookings i {
+  font-size: 3rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+
+.explore-btn {
+  padding: 12px 24px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  background: #1976d2;
+  transform: translateY(-2px);
+} 

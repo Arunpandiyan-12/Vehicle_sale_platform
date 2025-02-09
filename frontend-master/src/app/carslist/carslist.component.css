@@ -1,0 +1,483 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Banner Section */
+.carslist-banner {
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+                url('/car-est-banner.jpg') center/cover;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-content {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* Modern Search Bar */
+.search-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.search-form {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    z-index: 1;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 20px 15px 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Main Container */
+.main-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+}
+
+/* Filter Styles */
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #d92128;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(217, 33, 40, 0.1);
+}
+
+.filter-group select option {
+    background: white;
+    color: #333;
+}
+
+.price-range {
+    display: flex;
+    gap: 10px;
+}
+
+.price-range input {
+    width: 100%;
+}
+
+.price-range input::placeholder {
+    color: #666;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.apply-filters-btn, .reset-filters-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-filters-btn {
+    background: #d92128;
+    color: white;
+    flex: 2;
+}
+
+.reset-filters-btn {
+    background: #e9ecef;
+    color: #495057;
+    flex: 1;
+}
+
+.apply-filters-btn:hover {
+    background: #b0181f;
+}
+
+.reset-filters-btn:hover {
+    background: #dee2e6;
+}
+
+/* Car Listings Grid */
+.car-listings {
+    padding: 20px 0;
+}
+
+.car-listings h2 {
+    color: #dc3545;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.car-listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.car-listing {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+.image-container {
+    position: relative;
+    overflow: hidden; /* Ensures the image and slider don't overflow */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1); /* Default scale */
+    transition: transform 0.5s ease; /* Animate only transform for performance */
+}
+
+.image-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.2); /* Initial zoomed state */
+    transition: transform 0.8s ease, opacity 0.8s ease; /* Separate transitions */
+    z-index: 2; /* Ensures it layers above the image */
+}
+
+.car-listing:hover .image-container img {
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.car-listing:hover .image-slider {
+    opacity: 1; /* Fade in */
+    transform: scale(1); /* Reset to normal scale */
+}
+
+
+.details {
+    padding: 20px;
+}
+
+.details h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.4rem;
+    color: red;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.car-info {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.view-details {
+    width: 100%;
+    padding: 12px;
+    background: #ffffff;
+    color: rgb(97, 96, 96);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.3s ease;
+}
+
+.view-details:hover {
+    background: #b0181f;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* Page Size Selector */
+.page-size-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.page-size-selector select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+/* Pagination dots */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    user-select: none;
+}
+
+.pagination button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination button:disabled {
+    background: #f5f5f5;
+    color: #999;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination button.active {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.pagination button.dots {
+    cursor: default;
+    background: #f8f9fa;
+    color: #6c757d;
+    border: none;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+
+/* States */
+.loading-state, .error-state, .no-cars {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.loading-state i {
+    color: #dc3545;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.error-state {
+    color: #dc3545;
+}
+
+.no-cars i {
+    color: #dc3545;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .search-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.car-listing {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Add these styles to your existing CSS */
+
+.filter-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-group select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.filter-group select:disabled:hover {
+    border-color: #ddd;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: #dc3545;
+}
+
+.filter-group select option[value=""] {
+    color: #666;
+}
+
+.filter-group select option[value=""]:first-child {
+    font-weight: bold;
+}

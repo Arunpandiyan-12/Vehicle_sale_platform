@@ -1,0 +1,115 @@
+<section class="estimator-section">
+  <div class="section-title animate__animated animate__fadeIn">
+
+    <h1>Car Value Estimator</h1>
+
+    <p>Get an instant, market-driven estimate for your vehicle in seconds</p>
+
+  </div>
+  <div class="content-wrapper">
+    <div class="left-content">
+      <h2 class="animate__animated animate__fadeIn">Know Your Car's Worth</h2>
+      <p class="subtitle animate__animated animate__fadeIn animate__delay-1s">
+        Get an instant estimate based on current market trends
+      </p>
+      <div class="features animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="feature">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Instant Valuation</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-chart-line"></i>
+          <span>Market-Based Pricing</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>Trusted Estimates</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="estimate-card animate__animated animate__fadeInRight">
+      <form (ngSubmit)="getEstimate()" #form="ngForm" class="estimate-form">
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="carMake" 
+            class="form-control" 
+            [(ngModel)]="estimateData.carMake" 
+            name="carMake" 
+            required
+            placeholder=" ">
+          <label for="carMake" [class.active]="estimateData.carMake">Car Brand</label>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="carModel" 
+            class="form-control" 
+            [(ngModel)]="estimateData.carModel" 
+            name="carModel" 
+            required
+            placeholder=" ">
+          <label for="carModel" [class.active]="estimateData.carModel">Car Model</label>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="number" 
+            id="year" 
+            class="form-control" 
+            [(ngModel)]="estimateData.manufactureYear" 
+            name="year" 
+            required
+            min="1990" 
+            max="2024"
+            placeholder=" ">
+          <label for="year" [class.active]="estimateData.manufactureYear">Manufacturing Year</label>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="location" 
+            class="form-control" 
+            [(ngModel)]="estimateData.vehicleLocation" 
+            name="location" 
+            required
+            placeholder=" ">
+          <label for="location" [class.active]="estimateData.vehicleLocation">Location</label>
+        </div>
+
+        <button 
+          type="submit" 
+          [disabled]="!form.valid || loading" 
+          class="estimate-btn">
+          <span *ngIf="!loading">Get Instant Estimate</span>
+          <div *ngIf="loading" class="loader"></div>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Price Estimate Modal -->
+<div class="modal" *ngIf="showModal" [@fadeInOut]>
+  <div class="modal-content animate__animated animate__zoomIn">
+    <div class="modal-header">
+      <h3>Estimated Car Value</h3>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="price">₹{{ estimatedPrice }}</div>
+      <div class="car-details">
+        <p><strong>{{ estimateData.carMake }} {{ estimateData.carModel }}</strong></p>
+        <p>{{ estimateData.manufactureYear }} | {{ estimateData.vehicleLocation }}</p>
+      </div>
+      <p class="note">*This is an estimated value based on current market trends</p>
+    </div>
+    <div class="modal-footer">
+      <button class="action-btn" (click)="closeModal()">Close</button>
+      <button class="action-btn primary" (click)="sellYourCar()">List Your Car</button>
+    </div>
+  </div>
+</div> 

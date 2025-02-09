@@ -1,0 +1,32 @@
+  <!-- Navbar Section -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="carhublogo.png" alt="CarHub Logo" class="logo-image">
+        <span>CarHub</span>
+      </div>
+      <nav>
+        <a routerLink="/homepage" routerLinkActive="active">Home</a>
+        <a routerLink="/carslist" routerLinkActive="active">Explore Cars</a>
+        <a *ngIf="currentUser" routerLink="/sellacar" routerLinkActive="active">Sell Car</a>
+        <a routerLink="/serviceprovider" routerLinkActive="active">Service</a>
+        
+        <ng-container *ngIf="!currentUser">
+          <a routerLink="/signin" routerLinkActive="active">Sign In</a>
+        </ng-container>
+        
+        <div class="user-profile" *ngIf="currentUser" (click)="toggleDropdown()">
+          <div class="user-initials">{{ currentUser.initials }}</div>
+          <div class="dropdown-menu" *ngIf="showDropdown">
+            <div class="dropdown-header">
+              <div class="user-name">{{ currentUser.username }}</div>
+              <div class="user-email">{{ currentUser.email }}</div>
+            </div>
+            <a (click)="navigateToListings()">Your Listings</a>
+            <a (click)="navigateToBookings()">Your Bookings</a>
+            <a (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>

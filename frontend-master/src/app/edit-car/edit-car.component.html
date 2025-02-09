@@ -1,0 +1,56 @@
+<div class="edit-car-container">
+  <h2>Edit Car Details</h2>
+
+  <div class="loading" *ngIf="loading">Loading...</div>
+
+  <form *ngIf="!loading && car" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Car Make</label>
+      <input type="text" [(ngModel)]="car.carMake" name="carMake" required>
+    </div>
+
+    <div class="form-group">
+      <label>Car Model</label>
+      <input type="text" [(ngModel)]="car.carModel" name="carModel" required>
+    </div>
+
+    <div class="form-group">
+      <label>Variant</label>
+      <input type="text" [(ngModel)]="car.variant" name="variant">
+    </div>
+
+    <div class="form-group">
+      <label>Manufacture Year</label>
+      <input type="number" [(ngModel)]="car.manufactureYear" name="manufactureYear" required>
+    </div>
+
+    <div class="form-group">
+      <label>Kilometers Driven</label>
+      <input type="number" [(ngModel)]="car.kms" name="kms" required>
+    </div>
+
+    <div class="form-group">
+      <label>Expected Price</label>
+      <input type="number" [(ngModel)]="car.expectedPrice" name="expectedPrice" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="car.description" name="description" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Update Images</label>
+      <input type="file" (change)="onFileSelect($event)" multiple accept="image/*">
+    </div>
+
+    <div class="current-images" *ngIf="car.imageUrls?.length">
+      <h3>Current Images</h3>
+      <div class="image-grid">
+        <img *ngFor="let url of car.imageUrls" [src]="url" alt="Car image">
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loading">Update Car Details</button>
+  </form>
+</div> 

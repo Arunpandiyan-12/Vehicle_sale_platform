@@ -1,0 +1,144 @@
+<div class="sell-car-container">
+  <div class="form-header">
+    <h2>List Your Car</h2>
+    <p>Fill in the details below to list your car for sale</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #carForm="ngForm" class="car-form">
+    <div class="form-sections">
+      <!-- Basic Information -->
+      <div class="form-section">
+        <h3>Basic Information</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Registration Number*</label>
+            <input type="text" [(ngModel)]="carDetail.registrationNumber" name="registrationNumber" required>
+          </div>
+          <div class="form-group">
+            <label>Owner Name*</label>
+            <input type="text" [(ngModel)]="carDetail.ownerName" name="ownerName" required>
+          </div>
+          <div class="form-group">
+            <label>Make*</label>
+            <input type="text" [(ngModel)]="carDetail.carMake" name="carMake" required>
+          </div>
+          <div class="form-group">
+            <label>Model*</label>
+            <input type="text" [(ngModel)]="carDetail.carModel" name="carModel" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle Details -->
+      <div class="form-section">
+        <h3>Vehicle Details</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Manufacture Year</label>
+            <input type="number" [(ngModel)]="carDetail.manufactureYear" name="manufactureYear">
+          </div>
+          <div class="form-group">
+            <label>Kilometers Driven</label>
+            <input type="number" [(ngModel)]="carDetail.kms" name="kms">
+          </div>
+          <div class="form-group">
+            <label>Body Type</label>
+            <select [(ngModel)]="carDetail.bodyType" name="bodyType">
+              <option value="">Select Body Type</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="MUV">MUV</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Number of Owners</label>
+            <input type="number" [(ngModel)]="carDetail.numberOfOwners" name="numberOfOwners">
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Details -->
+      <div class="form-section">
+        <h3>Additional Details</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Fuel Type</label>
+            <select [(ngModel)]="carDetail.fuelType" name="fuelType">
+              <option value="">Select Fuel Type</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Transmission</label>
+            <select [(ngModel)]="carDetail.transmissionType" name="transmissionType">
+              <option value="">Select Transmission</option>
+              <option value="Manual">Manual</option>
+              <option value="Automatic">Automatic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Location*</label>
+            <input type="text" [(ngModel)]="carDetail.vehicleLocation" name="vehicleLocation" required>
+          </div>
+          <div class="form-group">
+            <label>Expected Price*</label>
+            <input type="number" [(ngModel)]="carDetail.expectedPrice" name="expectedPrice" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Images Upload -->
+      <div class="form-section">
+        <h3>Car Images</h3>
+        <div class="image-upload-container">
+          <input type="file" 
+                 multiple 
+                 accept="image/*" 
+                 (change)="onFileSelect($event)" 
+                 class="file-input">
+          <div class="upload-label">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>Drop images here or click to upload</span>
+          </div>
+        </div>
+        <div class="selected-files" *ngIf="selectedFiles.length > 0">
+          <p>Selected Files: {{ selectedFiles.length }}</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-section">
+        <h3>Description</h3>
+        <div class="form-group">
+          <textarea [(ngModel)]="carDetail.description" 
+                    name="description" 
+                    rows="4" 
+                    placeholder="Add detailed description about your car..."></textarea>
+        </div>
+      </div>
+
+      <!-- Bidding Option -->
+      <div class="form-section">
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" 
+                   [(ngModel)]="carDetail.biddingAllowed" 
+                   name="biddingAllowed">
+            Enable bidding for this car
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="loading" class="submit-btn">
+        {{ loading ? 'Submitting...' : 'Submit Listing' }}
+      </button>
+    </div>
+  </form>
+</div>
+

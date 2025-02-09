@@ -1,0 +1,190 @@
+<div class="dashboard-container">
+  <!-- Welcome Message -->
+  <div class="welcome-banner" *ngIf="hasPendingCars()">
+    <i class="fas fa-info-circle"></i>
+    <p>Your car listing is pending admin approval. We'll notify you once it's approved.</p>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-car"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Total Listings</h3>
+        <p>{{stats.totalListings}}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon pending">
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Pending Approval</h3>
+        <p>{{stats.pendingApprovals}}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon success">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Cars Sold</h3>
+        <p>{{stats.soldCars}}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon booking">
+        <i class="fas fa-calendar-check"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Active Bookings</h3>
+        <p>{{stats.activeBookings}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Navigation -->
+  <div class="tab-navigation">
+    <button [class.active]="activeTab === 'listings'" (click)="setActiveTab('listings')">
+      <i class="fas fa-car"></i> Your Listings
+    </button>
+    <button [class.active]="activeTab === 'bookings'" (click)="setActiveTab('bookings')">
+      <i class="fas fa-calendar-alt"></i> Booking Requests
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-spinner" *ngIf="loading">
+    <i class="fas fa-spinner fa-spin"></i>
+    Loading...
+  </div>
+
+  <!-- Listings Section -->
+  <div class="listings-section" *ngIf="activeTab === 'listings'">
+    <div class="listings-grid">
+      <div class="car-card" *ngFor="let car of cars">
+        <div class="car-status" [ngClass]="car.status.toLowerCase()">{{car.status}}</div>
+        <img [src]="car.imageUrls[0]" [alt]="car.carMake + ' ' + car.carModel">
+        <div class="car-info">
+          <h3>{{car.carMake}} {{car.carModel}}</h3>
+          <p class="price">₹{{car.expectedPrice | number}}</p>
+          <div class="car-specs">
+            <span><i class="fas fa-calendar"></i> {{car.manufactureYear}}</span>
+            <span><i class="fas fa-road"></i> {{car.kms}}km</span>
+            <span><i class="fas fa-gas-pump"></i> {{car.fuelType}}</span>
+          </div>
+          <div class="car-actions">
+            <button class="edit-btn" (click)="editCar(car)">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="sold-btn" *ngIf="car.status === 'APPROVED' && !car.isSold" 
+                    (click)="markAsSold(car.id)">
+              <i class="fas fa-check"></i> Mark as Sold
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookings Section -->
+  <div class="bookings-section" *ngIf="activeTab === 'bookings'">
+    <h2 class="section-title">Booking Requests</h2>
+    <div class="bookings-grid">
+      <div class="booking-card" *ngFor="let booking of bookings">
+        <div class="booking-header" [ngClass]="booking.status?.toLowerCase()">
+          <span class="status-badge">{{booking.status}}</span>
+          <span class="booking-date">{{booking.createdAt | date:'medium'}}</span>
+        </div>
+        
+        <div class="booking-content">
+          <div class="booking-flex">
+            <!-- Left Side: Car Details -->
+            <div class="car-info-section">
+              <h4><i class="fas fa-car"></i> Car Details</h4>
+              <div class="info-grid">
+                <div class="info-item">
+                  <span class="label">Make & Model:</span>
+                  <span class="value">{{getCarDetails(booking.carId)?.carMake}} {{getCarDetails(booking.carId)?.carModel}}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Registration:</span>
+                  <span class="value">{{getCarDetails(booking.carId)?.registrationNumber}}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Price:</span>
+                  <span class="value highlight">₹{{getCarDetails(booking.carId)?.expectedPrice | number}}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Buyer Details -->
+            <div class="buyer-info-section">
+              <h4><i class="fas fa-user"></i> Buyer Details</h4>
+              <div class="info-grid">
+                <div class="info-item">
+                  <span class="label">Name:</span>
+                  <span class="value">{{booking.username}}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Email:</span>
+                  <span class="value">{{booking.email}}</span>
+                </div>
+                <div class="info-item" *ngIf="booking.bidAmount">
+                  <span class="label">Bid Amount:</span>
+                  <span class="value highlight">₹{{booking.bidAmount | number}}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Message:</span>
+                  <span class="value message">{{booking.sellerMessage}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom: Action Buttons -->
+          <div class="booking-actions" *ngIf="booking.status?.toUpperCase() === 'PENDING'">
+            <button class="accept-btn" (click)="handleBooking(booking.id, 'ACCEPTED')">
+              <i class="fas fa-check-circle"></i> Accept
+            </button>
+            <button class="reject-btn" (click)="handleBooking(booking.id, 'REJECTED')">
+              <i class="fas fa-times-circle"></i> Reject
+            </button>
+          </div>
+          
+          <!-- Status Message for non-pending bookings -->
+          <div class="booking-status-message" *ngIf="booking.status?.toUpperCase() !== 'PENDING'">
+            <div class="status-message" [ngClass]="booking.status?.toLowerCase()">
+              <i class="fas" [ngClass]="{'fa-check-circle': booking.status === 'ACCEPTED', 'fa-times-circle': booking.status === 'REJECTED'}"></i>
+              Booking {{booking.status?.toLowerCase()}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Cars Template -->
+  <ng-template #noCars>
+    <div class="no-data">
+      <i class="fas fa-car"></i>
+      <p>You haven't listed any cars yet</p>
+      <button routerLink="/sell-car" class="add-listing-btn">
+        <i class="fas fa-plus"></i> Add Your First Listing
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- No Bookings Template -->
+  <ng-template #noBookings>
+    <div class="no-data">
+      <i class="fas fa-calendar-times"></i>
+      <p>No booking requests yet</p>
+    </div>
+  </ng-template>
+</div>

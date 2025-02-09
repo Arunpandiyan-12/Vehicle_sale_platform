@@ -1,0 +1,28 @@
+
+    <div class="dashboard-container">
+        <div class="welcome-section">
+            <h1>Welcome to CarHub</h1>
+            <p>Select your destination</p>
+        </div>
+
+        <div class="dashboard-options">
+            <div class="option-card" *ngIf="userRole === 'SELLER'" routerLink="/seller-dashboard">
+                <i class="fas fa-car"></i>
+                <h2>Seller Dashboard</h2>
+                <p>Manage your car listings and bookings</p>
+            </div>
+
+            <div class="option-card" *ngIf="userRole === 'ADMIN'" routerLink="/admin-dashboard">
+                <i class="fas fa-user-shield"></i>
+                <h2>Admin Dashboard</h2>
+                <p>Manage users and car approvals</p>
+            </div>
+
+            <div class="option-card" routerLink="/cars">
+                <i class="fas fa-search"></i>
+                <h2>Browse Cars</h2>
+                <p>View available cars for sale</p>
+            </div>
+        </div>
+    </div>
+

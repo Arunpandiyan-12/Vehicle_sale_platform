@@ -1,0 +1,1235 @@
+/* General Container Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* General Container Styling */
+/* General Container Styling */
+/* General Container Styling */
+/* General Container Styling */
+/* General Container Styling */
+/* General Container Styling */
+/* General Container Styling */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Image Container Styling */
+/* Styles for the Image Section */
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slider {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.image-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* Optional: Add hover effects to arrows */
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Car Details Section */
+.details-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.left-column, .right-column {
+  width: 48%;
+}
+
+.car-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d3436;
+  margin: 10px 0;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 24px;
+  color: #d92128;
+}
+
+.location {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Adjusted Details Wrapper Layout */
+.details-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+/* Left Column - Basics and Features */
+.left-column {
+  width: 60%;
+}
+
+.details-table {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 10px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail-row strong {
+  color: #333;
+}
+
+.detail-row span {
+  color: #666;
+}
+
+/* Right Column - Car Estimate and Bid */
+.right-column {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.deal-gauge-container {
+  margin-bottom: 20px;
+}
+
+/* Bid Slider Section */
+.slider-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.bid-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #d92128 0%, #d92128 0%, #ddd 0%, #ddd 100%);
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.slider-value {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.message-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.submit-button, .book-button {
+  padding: 12px;
+  background-color: #d92128;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover, .book-button:hover {
+  background-color: #b0181f;
+}
+
+
+
+
+/* Deal Gauge Styling */
+.deal-gauge {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.deal-gauge h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.deal-gauge .powered-by {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+.deal-gauge .price-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.deal-gauge .price-display .icon {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.deal-gauge .gauge {
+  margin-top: 12px;
+}
+
+/* Thinner Gauge Bar */
+.gauge-bar {
+  height: 4px; /* Reduced height to make the line thinner */
+  background: #e0e0e0;
+  position: relative;
+}
+
+/* Solid Circle for Actual Price Indicator */
+.indicator.actual-price {
+  position: absolute;
+  top: -8px; /* Adjust position of the circle above the gauge */
+  left: 50%; /* Center horizontally */
+  width: 16px; /* Size of the circle */
+  height: 16px;
+  background-color: #007bff; /* Blue color for the actual price */
+  border-radius: 50%; /* Make it round */
+  transform: translateX(-50%); /* Center horizontally */
+}
+
+/* Circle for Estimated Price Indicator */
+.indicator.estimated-price {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px; /* Same size as actual price indicator */
+  height: 16px;
+  background: url('/car.png') no-repeat center center; /* Path to your image */
+  background-size: contain;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* Labels for min, avg, and max */
+.gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.gauge-labels span {
+  font-size: 12px;
+  color: #333;
+}
+
+/* Labels for Actual and Estimated Prices */
+.price-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 8px;
+}
+
+.price-labels span {
+  font-weight: bold;
+  color: #333;
+}
+
+.details-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Make Details Table Flex */
+.details-wrapper .details-table {
+  flex: 1;
+}
+
+.specifications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.specification-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  width: 32px; /* Reduced size */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon img,
+.color-circle {
+  width: 32px; /* Match the new size */
+  height: 32px;
+  border-radius: 50%;
+}
+
+
+.color-circle {
+  border: 1px solid #ccc;
+}
+
+.spec-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.spec-value {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.car-detail-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+}
+
+/* Modern Image Gallery Styles */
+.image-gallery {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 2rem;
+}
+
+.main-image {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Increased height */
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Changed to cover for better image display */
+  transition: all 0.3s ease;
+}
+
+.main-image:hover img {
+  transform: scale(1.02);
+}
+
+.image-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.main-image:hover .image-controls {
+  opacity: 1;
+}
+
+.nav-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc3545;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+  background: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-strip {
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.thumbnails {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #dc3545 #f0f0f0;
+}
+
+.thumbnails::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnails::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+  background-color: #dc3545;
+  border-radius: 3px;
+}
+
+.thumbnails img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.thumbnails img.active {
+  opacity: 1;
+  border-color: #dc3545;
+  transform: scale(1.05);
+}
+
+.thumbnails img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .main-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-image {
+    height: 300px;
+  }
+}
+
+/* Car Information Section */
+.car-info-section {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-section {
+  margin-bottom: 2rem;
+}
+
+.car-title {
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.make-model {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3436;
+  display: block;
+}
+
+.variant {
+  font-size: 1.5rem;
+  color: #636e72;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.sub-info {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0;
+  color: #636e72;
+  font-size: 1.1rem;
+}
+
+.location, .kms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.location i, .kms i {
+  color: #dc3545;
+}
+
+.specifications-section {
+  margin: 2rem 0;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.spec-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.spec-item i {
+  font-size: 1.5rem;
+  color: #dc3545;
+  width: 40px;
+  text-align: center;
+}
+
+.spec-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spec-details label {
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+.spec-details span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2d3436;
+}
+
+/* Update bidding section */
+.bidding-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.bid-input-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.bid-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.bid-input:focus {
+  border-color: #dc3545;
+  outline: none;
+}
+
+.bid-button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bid-button:hover:not(:disabled) {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.bid-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Key Features */
+.key-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feature-item i {
+  font-size: 1.5rem;
+  color: #dc3545;
+}
+
+.feature-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-info label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.feature-info span {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Details Section */
+.details-section {
+  margin: 2rem 0;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-item label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.detail-item span {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Action Section */
+.action-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.bid-input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.bid-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.bid-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bid-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.min-bid-note {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.interest-button {
+  width: 100%;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.interest-button:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: modalSlideIn 0.3s ease;
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner i {
+  font-size: 2rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.ai-estimate {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.estimate-text {
+  font-size: 1.5rem;
+  color: #333;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.market-analysis {
+  text-align: center;
+}
+
+.analysis-note {
+  color: #666;
+  font-style: italic;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-image {
+    height: 300px;
+  }
+
+  .title-price {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .price-container {
+    text-align: center;
+  }
+
+  .key-features {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bid-input-group {
+    flex-direction: column;
+  }
+}
+
+/* Quick Overview */
+.quick-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.overview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.overview-item i {
+  font-size: 1.5rem;
+  color: #dc3545;
+  margin-bottom: 0.5rem;
+}
+
+.overview-item span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.overview-item label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Specifications */
+.specifications-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.specifications-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-item label {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.spec-item span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Description */
+.description-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.description-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.description-section p {
+  line-height: 1.6;
+  color: #2d3436;
+}
+
+/* Bidding Section */
+.bidding-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.bidding-section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.bid-input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bid-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.bid-input:focus {
+  border-color: #dc3545;
+  outline: none;
+}
+
+.bid-note {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quick-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .title-price {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bid-input-group {
+    flex-direction: column;
+  }
+}
+
+/* Update the estimate button styling to make it more prominent */
+.estimate-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+}
+
+.estimate-btn i {
+  font-size: 1.2rem;
+}
+
+.estimate-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.3);
+}
+
+/* Update media queries for responsive design */
+@media (max-width: 992px) {
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Update price container to move button to right */
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #dc3545;
+}
+
+/* Add image popup styles */
+.image-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.popup-image {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: default;
+  animation: zoomIn 0.3s ease;
+}
+
+.popup-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  pointer-events: none;
+}
+
+.popup-nav-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc3545;
+  font-size: 1.2rem;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.popup-nav-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc3545;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.close-popup:hover {
+  background: white;
+  transform: rotate(90deg);
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

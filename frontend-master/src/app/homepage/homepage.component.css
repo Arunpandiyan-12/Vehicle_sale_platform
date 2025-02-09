@@ -1,0 +1,1028 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+/* Container with max-width and centering */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Header styling */
+header {
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Logo styling */
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+/* Main section styling */
+main {
+    padding: 40px 0;
+}
+
+/* Hero section styling */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 80px;
+    background: white;
+    z-index: 2;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align to the start */
+}
+
+/* Hero content styling */
+.hero-content {
+    width: 45%;
+    padding-right: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.hero-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #d92128; /* Red color */
+    font-family: Helvetica;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* Buttons under hero section */
+.hero-buttons {
+    display: flex;
+}
+
+.hero-buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.register-btn {
+    background-color: #d92128; /* Red color */
+    color: white;
+    margin-right: 15px;
+}
+
+.see-more-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.register-btn:hover {
+    background-color: #b0181f;
+}
+
+.see-more-btn:hover {
+    background-color: #eee;
+}
+
+/* Hero image styling */
+.hero-image {
+    width: 50%;
+    text-align: right;
+    opacity: 0;
+    transform: translateX(300px); /* Start from further right */
+    transition: none; /* Remove initial transition */
+}
+
+.hero-image.active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 1.2s cubic-bezier(0.17, 0.84, 0.44, 1); /* Smooth easing */
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    background: none;
+}
+
+/* Remove these unused animations */
+.scroll-fade-in,
+.scroll-slide-in,
+.scroll-fade-in.active,
+.scroll-slide-in.active {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+/* Cars Grid - 4 items per row */
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Max 4 items per row */
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+  }
+  
+  /* Individual Car Card Styling */
+  .car-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    font-weight: 400; /* Regular weight for the car card */
+  }
+  
+  /* Image Styling for Cars */
+  .car-card img {
+    width: 100%;
+    max-width: 150px; /* Maximum width for the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Car Name Styling - Similar to Tesla's emphasis */
+  .car-card span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600; /* Bold for car names */
+    color: #111; /* Dark color for names */
+    letter-spacing: 0.5px; /* Slight letter-spacing for better clarity */
+    text-transform: uppercase; /* Uppercase for emphasis */
+  }
+  
+  /* Hover Effects for Cards */
+  .car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .car-card:hover img {
+    transform: scale(1.1);
+  }
+  /* Container for the Explore Page */
+  .explore-cars-container {
+    text-align: center;
+    background-color: white;
+    padding: 20px 10px;
+  }
+  
+  
+/* Full Screen Video Section */
+.video-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -80px; /* Offset navbar height */
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#myVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    margin-top: 80px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.video-content h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.video-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #d92128;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #b0181f;
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slideUp 1s ease forwards;
+}
+
+.slide-up-delay {
+    animation: slideUp 1s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.slide-up-delay-2 {
+    animation: slideUp 1s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+/* Explore Section Styling */
+.explore-section {
+    padding: 80px 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), 
+                url('/pattern1.webp') center/cover no-repeat;
+    position: relative;
+    min-height: 80vh;
+}
+
+.explore-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-header p {
+    color: #999;
+    font-size: 1.1rem;
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.brand-card {
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.brand-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.brand-card:hover .brand-inner {
+    transform: rotateY(180deg);
+}
+
+.brand-front, .brand-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.brand-front {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-back {
+    background: linear-gradient(145deg, #d92128, #961319);
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.brand-image {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0 auto 20px;
+}
+
+.brand-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: none; /* Remove invert filter */
+    transition: transform 0.3s ease;
+}
+
+.brand-front h3 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.brand-back p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.explore-btn {
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #d92128;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for cards */
+.brand-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.brand-card.animate {
+    animation: cardFadeIn 0.8s ease forwards;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .brands-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .brand-card {
+        height: 250px;
+    }
+}
+
+/* Car Types Section */
+.car-types-section {
+    padding: 30px 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.98)), 
+                url('/car-est-banner.jpg') center/cover fixed;
+    position: relative;
+    overflow: hidden; /* Prevent horizontal scroll */
+}
+
+.car-types-section .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.car-types-section .section-header h2 {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.car-types-section .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #d92128;
+}
+
+.car-types-section .section-header p {
+    color: #999;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.car-types-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    overflow: hidden; /* Prevent horizontal scroll */
+}
+
+.car-type-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 220px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100px);
+    position: relative;
+    overflow: hidden; /* Contain the image */
+}
+
+.car-type-card.animate .image-container {
+    animation: slideInFromRight 0.8s forwards;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.car-type-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.car-type-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #ffffff;
+    text-align: center;
+    z-index: 2;
+}
+
+.car-type-content h3 {
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Animation keyframes */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes headerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .car-types-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .car-types-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+    }
+    
+    .car-types-section .section-header h2 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .car-types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .car-type-card {
+        height: 180px;
+    }
+    
+    .car-types-section .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Trending Section */
+.trending-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.jws-title {
+    color: #1a1a1a;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #1a1a1a;
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+.trending-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.trending-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.trending-card.animate {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.trending-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(217, 33, 40, 0.9);
+    padding: 8px 15px;
+    border-radius: 25px;
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+
+.car-status {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    z-index: 2;
+}
+
+.status-badge {
+    background: rgba(40, 167, 69, 0.9);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(5px);
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.car-specs, .additional-info {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.car-specs span, .additional-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.car-specs i, .additional-info i {
+    color: #d92128;
+    width: 16px;
+    text-align: center;
+}
+
+.price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.view-btn {
+    padding: 10px 25px;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: #d92128;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(217, 33, 40, 0.2);
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .jws-title {
+        font-size: 3rem;
+    }
+    
+    .trending-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Our Advantages Section - Enhanced Design */
+.advantages-section {
+    position: relative;
+    min-height: 100vh;
+    background: #000000;
+    overflow: hidden;
+}
+
+/* Title Container - New */
+.advantages-title {
+    position: absolute;
+    top: 20px;  /* Adjust this value for vertical positioning */
+    left: 0;
+    right: 0;
+    z-index: 10;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.advantages-title .subtitle {
+    font-size: 20px;
+    color: #FF0000;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.advantages-title .title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.3;
+    margin: 0 auto;
+    max-width: 800px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.advantages-title .title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #FF0000;
+    border-radius: 2px;
+}
+
+/* Update Content Side */
+.advantages-content {
+    padding: 140px 40px 80px;  /* Increased top padding to accommodate title */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.98));
+    display: flex;
+    align-items: center;
+}
+
+/* Remove old header styling */
+
+
+.advantages-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* Enhanced Image Side */
+.advantages-image {
+    position: relative;
+    background: url('/pattern1.webp') center/cover no-repeat;
+    min-height: 100%;
+    filter: brightness(0.9) contrast(1.1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.advantages-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.6)
+    );
+}
+
+/* Enhanced Grid Layout */
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+/* Enhanced Card Styling */
+.advantage-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.advantage-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Icon Styling */
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+}
+
+.icon-wrapper:hover {
+    transform: scale(1.1);
+    background: #cc0000;
+}
+
+.icon-wrapper i {
+    font-size: 24px;
+    color: white;
+}
+
+/* Enhanced Content Styling */
+.card-content h3 {
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 0 0 15px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.scroll-top:hover {
+    background: #cc0000;
+    transform: translateY(-5px);
+}
+
+.scroll-top i {
+    color: white;
+    font-size: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .advantages-split {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantages-image {
+        height: 400px;  /* Increased height for better visibility */
+    }
+
+    .section-header .title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .advantages-content {
+        padding: 60px 20px;
+    }
+    
+    .section-header .title {
+        font-size: 28px;
+    }
+    
+    .advantages-image {
+        height: 300px;
+    }
+}
+  

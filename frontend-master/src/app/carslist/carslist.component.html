@@ -1,0 +1,177 @@
+<!-- Banner with Search -->
+<div class="carslist-banner">
+    <div class="banner-content">
+        <h1>Find Your Perfect Car</h1>
+        <p>Browse through our extensive collection of premium vehicles</p>
+    </div>
+    <div class="search-container">
+        <form class="search-form" (submit)="onSearch($event)">
+            <i class="fas fa-search search-icon"></i>
+            <input 
+                type="text" 
+                class="search-input" 
+                [(ngModel)]="searchQuery" 
+                name="search"
+                placeholder="Search by brand, model, year or location..."
+                autocomplete="off"
+            >
+        </form>
+    </div>
+</div>
+
+<div class="main-container">
+    <!-- Sidebar Section (Always visible) -->
+    <aside class="sidebar">
+        <h3>Filter Cars</h3>
+        <form class="filter-form" (ngSubmit)="applyFilters()">
+            <div class="filter-group">
+                <label for="make">Brand</label>
+                <select id="make" [(ngModel)]="filters.carMake" name="make" (change)="onMakeChange()">
+                    <option value="">All Brands</option>
+                    <option *ngFor="let make of makes" [value]="make">{{make}}</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="model">Model</label>
+                <select id="model" [(ngModel)]="filters.carModel" name="model">
+                    <option value="">All Models</option>
+                    <option *ngFor="let model of models" [value]="model">{{model}}</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="year">Year</label>
+                <select id="year" [(ngModel)]="filters.manufactureYearStart" name="year">
+                    <option value="0">Any Year</option>
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Price Range</label>
+                <div class="price-range">
+                    <input type="number" [(ngModel)]="filters.priceMin" name="priceMin" placeholder="Min">
+                    <input type="number" [(ngModel)]="filters.priceMax" name="priceMax" placeholder="Max">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>Kilometers</label>
+                <div class="price-range">
+                    <input type="number" [(ngModel)]="filters.kmsMin" name="kmsMin" placeholder="Min">
+                    <input type="number" [(ngModel)]="filters.kmsMax" name="kmsMax" placeholder="Max">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label for="fuelType">Fuel Type</label>
+                <select id="fuelType" [(ngModel)]="filters.fuelType" name="fuelType">
+                    <option value="">All Types</option>
+                    <option *ngFor="let type of fuelTypes" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="transmission">Transmission</label>
+                <select id="transmission" [(ngModel)]="filters.transmissionType" name="transmission">
+                    <option value="">All Types</option>
+                    <option *ngFor="let type of transmissionTypes" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="bodyType">Body Type</label>
+                <select id="bodyType" [(ngModel)]="filters.bodyType" name="bodyType">
+                    <option value="">All Types</option>
+                    <option *ngFor="let type of bodyTypes" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="filter-actions">
+                <button type="submit" class="apply-filters-btn">Apply Filters</button>
+                <button type="button" class="reset-filters-btn" (click)="resetFilters()">Reset</button>
+            </div>
+        </form>
+    </aside>
+
+    <!-- Car Listings Section -->
+    <main class="car-listings">
+        <!-- Page Size Selector -->
+        <div class="page-size-selector">
+            <label>Show:</label>
+            <select #pageSizeSelect (change)="onPageSizeChange(+pageSizeSelect.value)">
+                <option [value]="12">12</option>
+                <option [value]="24">24</option>
+                <option [value]="36">36</option>
+            </select>
+        </div>
+        
+
+        <h2>Available Cars</h2>
+        
+        <!-- Loading State -->
+        <div *ngIf="loading" class="loading-state">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading cars...</p>
+        </div>
+
+        <!-- Error State -->
+        <div *ngIf="error" class="error-state">
+            <i class="fas fa-exclamation-circle"></i>
+            <p>{{ error }}</p>
+        </div>
+
+        <!-- Cars Grid -->
+        <div *ngIf="!loading && !error" class="car-listing-grid">
+            <div class="car-listing" *ngFor="let car of displayedCars">
+                <div class="image-container">
+                    <img [src]="car.imageUrls[0]" [alt]="car.carMake + ' ' + car.carModel">
+                    <img class="image-slider" [src]="car.imageUrls[1] || car.imageUrls[0]" 
+                         [alt]="car.carMake + ' ' + car.carModel">
+                </div>
+                <div class="details">
+                    <h3>{{car.carMake}} {{car.carModel}} {{car.manufactureYear}}</h3>
+                    <p class="price">₹{{car.expectedPrice | number}}</p>
+                    <div class="car-info">
+                        <span class="info-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            {{car.kms | number}} km
+                        </span>
+                        <span class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{car.vehicleLocation}}
+                        </span>
+                    </div>
+                    <button class="view-details" (click)="viewDetails(car.id)">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Cars State -->
+        <div *ngIf="!loading && !error && filteredCars.length === 0" class="no-cars">
+            <i class="fas fa-car"></i>
+            <p>No cars match your criteria</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button (click)="prevPage()" [disabled]="currentPage === 1" class="nav-button">
+                <i class="fas fa-chevron-left nav-arrow"></i>
+            </button>
+        
+            <button 
+                *ngFor="let page of getVisiblePages()" 
+                [class.active]="page === currentPage"
+                (click)="page !== -1 ? goToPage(page) : null" 
+                [class.dots]="page === -1">
+                {{ page === -1 ? '...' : page }}
+            </button>
+        
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="nav-button">
+                <i class="fas fa-chevron-right nav-arrow"></i>
+            </button>
+        </div>
+        
+    </main>
+</div>

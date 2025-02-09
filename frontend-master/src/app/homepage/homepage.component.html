@@ -1,0 +1,198 @@
+<main>
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <video 
+                #myVideo
+                id="myVideo"
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                preload="auto"
+            >
+                <source src="videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-content">
+            <h1 class="slide-up">WELCOME TO CARWORLD</h1>
+            <p class="slide-up-delay">Experience the future of car buying and selling</p>
+            <button class="cta-button slide-up-delay-2">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animated-text">ABOUT US</h1>
+                <p>At CarWorld, we're revolutionizing the automotive marketplace. Our platform brings together buyers, sellers, and service providers in one seamless ecosystem. With decades of automotive expertise, we ensure every transaction is transparent, secure, and satisfying.</p>
+                <p>Our mission is to simplify the car buying, selling, and maintenance process, making it accessible to everyone. We believe in building lasting relationships with our customers through trust, excellence, and innovation.</p>
+                <div class="hero-buttons">
+                    <button class="register-btn" (click)="register()">Join Us</button>
+                    <button class="see-more-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="tesla.png" alt="Car Image">
+            </div>
+        </div>
+    </section>
+
+    <section class="explore-section">
+        <div class="explore-container">
+            <div class="section-header">
+                <h2>Popular Brands</h2>
+                <p>Discover Your Perfect Car from Our Premium Selection</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-card" *ngFor="let car of cars; let i = index" 
+                    [class.animate]="isCardVisible"
+                    [style.animation-delay]="i * 0.1 + 's'"
+                    (click)="filterByBrand(car.name)">
+                    <div class="brand-inner">
+                        <div class="brand-front">
+                            <div class="brand-image">
+                                <img [src]="car.imgPath" [alt]="car.name" />
+                            </div>
+                            <h3>{{ car.name }}</h3>
+                        </div>
+                        <div class="brand-back">
+                            <p>Explore {{car.name}} Models</p>
+                            <button class="explore-btn">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-price-estimator></app-price-estimator>
+
+    <!-- Car Types Section -->
+    <section class="car-types-section">
+        <div class="section-header">
+            <h2>Explore by Body Type</h2>
+            <p>Find Your Perfect Vehicle Style</p>
+        </div>
+        <div class="car-types-grid">
+            <div class="car-type-card" *ngFor="let type of carTypes; let i = index"
+                [class.animate]="isCarTypeVisible"
+                (click)="filterByBodyType(type.name)">
+                <div class="image-container" [style.animation-delay]="i * 0.2 + 's'">
+                    <img [src]="type.image" [alt]="type.name">
+                </div>
+                <div class="car-type-content">
+                    <h3>{{type.name}}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Vehicles Section -->
+    <section class="trending-section">
+        <div class="section-title">
+            <h2 class="jws-title">Trending Cars</h2>
+            <p class="section-subtitle">Most Popular Choices</p>
+        </div>
+        <div class="trending-grid">
+            <div class="trending-card" *ngFor="let car of trendingCars; let i = index"
+                [class.animate]="isTrendingVisible"
+                [style.animation-delay]="i * 0.15 + 's'">
+                <div class="card-image">
+                    <img [src]="car.imageUrls[0]" [alt]="car.carMake + ' ' + car.carModel">
+                    <div class="trending-badge">
+                        <span class="badge-text">Trending</span>
+                        <span class="booking-count">{{car.bookingCount}} Bookings</span>
+                    </div>
+                    <div class="car-status" *ngIf="!car.isSold">
+                        <span class="status-badge">Available</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>{{car.carMake}} {{car.carModel}}</h3>
+                    <div class="car-specs">
+                        <span><i class="fas fa-calendar"></i> {{car.manufactureYear}}</span>
+                        <span><i class="fas fa-tachometer-alt"></i> {{car.kms | number}} km</span>
+                        <span><i class="fas fa-gas-pump"></i> {{car.fuelType}}</span>
+                    </div>
+                    <div class="additional-info">
+                        <span><i class="fas fa-map-marker-alt"></i> {{car.vehicleLocation}}</span>
+                        <span><i class="fas fa-user"></i> {{car.numberOfOwners}} Owner{{car.numberOfOwners > 1 ? 's' : ''}}</span>
+                    </div>
+                    <div class="price-section">
+                        <span class="price">₹{{car.expectedPrice | number}}</span>
+                        <button class="view-btn" (click)="viewCarDetails(car.id)">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" (click)="scrollToTop()" *ngIf="showScrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Our Advantages Section -->
+    <section class="advantages-section">
+        <!-- Centered Title -->
+        <div class="advantages-title">
+            <span class="subtitle">Our Advantages</span>
+            <h2 class="title">Provide you with the best automotive experience possible.</h2>
+        </div>
+
+        <div class="advantages-split">
+            <!-- Image Side -->
+            <div class="advantages-image"></div>
+            
+            <!-- Content Side -->
+            <div class="advantages-content">
+                <div class="content-wrapper">
+                    <div class="advantages-grid">
+                        <div class="advantage-card" [class.animate]="isAdvantagesVisible">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Transparent Pricing</h3>
+                                <p>Seeing Transparent Pricing up front not only makes it easier to shop and compare, but lets you make faster, better-informed decisions.</p>
+                            </div>
+                        </div>
+
+                        <div class="advantage-card" [class.animate]="isAdvantagesVisible">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-car-side"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Flexible Test Drive</h3>
+                                <p>We'll bring the vehicle to your home or place of work — perfect for busy people or those who prefer to test drive on familiar roads.</p>
+                            </div>
+                        </div>
+
+                        <div class="advantage-card" [class.animate]="isAdvantagesVisible">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Streamlined Purchase</h3>
+                                <p>You spend less time at the dealership and can review details online when it's most convenient.</p>
+                            </div>
+                        </div>
+
+                        <div class="advantage-card" [class.animate]="isAdvantagesVisible">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Easy Process</h3>
+                                <p>Our streamlined process makes car buying simple and efficient, saving you time and effort.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+    

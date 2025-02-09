@@ -1,0 +1,60 @@
+<div class="bookings-container">
+  <h2 class="section-title">Your Booking Requests</h2>
+
+  <div class="bookings-grid">
+    <div class="booking-card" *ngFor="let booking of bookings">
+      <div class="booking-header" [ngClass]="booking.status?.toLowerCase()">
+        <span class="status-badge">{{booking.status}}</span>
+        <span class="booking-date">{{booking.createdAt | date:'medium'}}</span>
+      </div>
+
+      <div class="booking-content">
+        <!-- Car Details -->
+        <div class="car-info">
+          <h4><i class="fas fa-car"></i> Car Details</h4>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="label">Make & Model:</span>
+              <span class="value">{{getCarDetails(booking.carId)?.carMake}} {{getCarDetails(booking.carId)?.carModel}}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Location:</span>
+              <span class="value">{{getCarDetails(booking.carId)?.vehicleLocation}}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Price:</span>
+              <span class="value highlight">₹{{getCarDetails(booking.carId)?.expectedPrice | number}}</span>
+            </div>
+            <div class="info-item" *ngIf="booking.bidAmount">
+              <span class="label">Your Bid:</span>
+              <span class="value highlight">₹{{booking.bidAmount | number}}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Status Message -->
+        <div class="status-message" [ngClass]="booking.status?.toLowerCase()">
+          <i class="fas" [ngClass]="{
+            'fa-clock': booking.status === 'PENDING',
+            'fa-check-circle': booking.status === 'ACCEPTED',
+            'fa-times-circle': booking.status === 'REJECTED'
+          }"></i>
+          <span>
+            {{booking.status === 'PENDING' ? 'Waiting for seller response' : 
+              booking.status === 'ACCEPTED' ? 'Booking accepted by seller' : 'Booking rejected by seller'}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Bookings Message -->
+  <div class="no-bookings" *ngIf="!bookings?.length">
+    <i class="fas fa-calendar-times"></i>
+    <h3>No Bookings Yet</h3>
+    <p>Start exploring cars and make your first booking!</p>
+    <button routerLink="/carslist" class="explore-btn">
+      <i class="fas fa-search"></i> Explore Cars
+    </button>
+  </div>
+</div> 

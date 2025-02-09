@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+/* Navbar Styling */
+.navbar {
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: transparent; 
+    transition: all 0.3s ease;
+}
+
+
+.navbar:not(.at-top) {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Initial state - white text */
+.navbar nav a,
+.navbar .logo span {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Scrolled state - dark text */
+.navbar:not(.at-top) nav a,
+.navbar:not(.at-top) .logo span {
+    color: #333;
+    text-shadow: none;
+}
+
+/* Remove backdrop filter from initial state */
+.navbar.at-top {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.navbar .container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+/* Logo Section */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+}
+
+.logo-image {
+    max-height: 15px;
+    margin-bottom: 5px;
+}
+
+.logo span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #d92128;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: #333; /* Default color */
+    text-shadow: none;
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #d92128;
+    transition: width 0.3s ease;
+}
+
+nav a:hover:after {
+    width: 100%;
+}
+
+nav a.active {
+    color: #d92128;
+}
+
+nav a.active:after {
+    width: 100%;
+}
+
+nav a.login-btn {
+    background-color: #d92128;
+    color: white;
+}
+
+nav a.login-btn:hover {
+    background-color: #b0181f;
+}
+
+/* Add these styles to your existing navbar CSS */
+
+.user-profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-initials {
+    width: 40px;
+    height: 40px;
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 1rem;
+    min-width: 200px;
+    margin-top: 0.5rem;
+}
+
+.dropdown-header {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.5rem;
+}
+
+.user-name {
+    display: block;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-email {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #eee;
+    margin: 5px 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.5rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    color: #1a73e8;
+}
+
+/* Add margin to main content */
+:host {
+    display: block;
+    margin-top: 80px;
+}
+
+/* Update navigation links for better visibility on transparent background */
+.navbar:not(.at-top) nav a {
+    color: #333;
+    text-shadow: none;
+}
+  

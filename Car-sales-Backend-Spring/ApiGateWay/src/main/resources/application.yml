@@ -1,0 +1,63 @@
+server:
+  port: 8090
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-management-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/users/**
+
+        - id: car-details-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/cars/**
+          filters:
+            - name: JwtAuthFilter
+              args:
+                allowedRoles:
+                  - admin
+                  - user
+
+        - id: admin-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/admin/**
+          filters:
+            - name: JwtAuthFilter
+              args:
+                allowedRoles:
+                  - admin
+
+        - id: carslist-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/carslist/**
+          filters:
+            - name: JwtAuthFilter
+              args:
+                allowedRoles:
+                  - admin
+                  - user
+
+        - id: booking-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/bookings/**
+          filters:
+            - name: JwtAuthFilter
+              args:
+                allowedRoles:
+                  - user
+                  - admin
+
+#  # Cors Configuration
+#  web:
+#    cors:
+#      allowed-origins: "http://localhost:4200"
+#      allowed-methods: "GET, POST, PUT, DELETE, OPTIONS"
+#      allowed-headers: "Authorization, Content-Type, Accept, X-Requested-With, Cache-Control"
+#      allow-credentials: true
+#      max-age: 3600

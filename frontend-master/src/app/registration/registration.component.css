@@ -1,0 +1,159 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 1.8rem;
+    color: #d92128;
+    font-weight: bold;
+}
+
+/* Main Section */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.signup-container {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.signup-form {
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.signup-form h2 {
+    font-size: 2rem;
+    color: #d92128;
+    margin-bottom: 20px;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.signup-form button {
+    width: 100%;
+    background-color: #d92128;
+    color: #fff;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-form button:hover {
+    background-color: #b0181f;
+}
+
+.signup-form .signin-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.signup-form .signin-link a {
+    color: #d92128;
+    text-decoration: none;
+}
+
+.signup-form .signin-link a:hover {
+    text-decoration: underline;
+}
+
+/* Car Image Section */
+.car-image {
+    flex: 1;
+    background: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.car-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ /* Logo Section */
+ .logo {
+    display: flex;
+    flex-direction: column; /* Stack logo image and text vertically */
+    align-items: center; /* Center align both image and text */
+    justify-content: center; /* Center content vertically within the container */
+    font-family: 'Poppins', Helvetica, Arial, sans-serif; 
+    text-align: center; /* Ensure text is centered under the image */
+}
+
+.logo-image {
+    max-height: 75px; /* Adjust height for the logo */
+    margin-bottom: 5px; /* Space between the logo image and text */
+    display: block; /* Ensure the image is treated as a block element for centering */
+}
+
+.logo span {
+    font-size: 1.5em; /* Adjust text size */
+    font-weight: bold;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif; 
+}
