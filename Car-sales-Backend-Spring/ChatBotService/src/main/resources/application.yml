@@ -4,5 +4,5 @@ server:
 spring:
   ai:
     openai:
-      api-key: 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
+      api-key: 
       api-url: https://api.openai.com/v1/chat/completions
