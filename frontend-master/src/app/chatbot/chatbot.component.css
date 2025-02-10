@@ -1,0 +1,174 @@
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-icon {
+    width: 100px;
+    height: 100px; 
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(97, 95, 94, 0.747);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Car Image */
+.chat-icon img {
+    width: 130px;  
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.chat-icon:hover {
+    transform: scale(1.1); 
+}
+
+/* Click Animation */
+.chat-icon:active {
+    transform: scale(0.95);
+}
+
+
+.chat-window {
+    width: 350px;
+    height: 450px;
+    background: black;
+    border-radius: 12px;
+    position: absolute;
+    bottom: 80px;
+    right: 10px;
+    display: none;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.chat-window.open {
+    display: flex;
+}
+
+.chat-header {
+    background: white;
+    color: black;
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+    color: white;
+}
+
+.message {
+    padding: 10px 14px;
+    margin: 6px 0;
+    border-radius: 6px;
+    max-width: 80%;
+}
+
+.message.user {
+    background: white;
+    color: black;
+    align-self: flex-end;
+}
+
+.message.bot {
+    background: #333;
+    color: white;
+    align-self: flex-start;
+}
+
+.typing-animation {
+    color: gray;
+    font-weight: bold;
+    padding: 8px;
+    font-size: 30px;
+    align-self: flex-start;
+}
+
+.chat-input {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid gray;
+    background: #222;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-right: 6px;
+    background: black;
+    color: white;
+}
+
+.chat-input button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background: black;
+    color: white;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 22px; /* Bigger and more visible */
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.close-btn:hover {
+    color: rgb(222, 91, 91); 
+    transform: scale(1.2); 
+}
+
+/* Click Effect */
+.close-btn:active {
+    transform: scale(0.9); /
+}
+
+.chat-icon::after {
+    content: "Try Chat!";
+    position: absolute;
+    top: -35px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+.chat-icon:hover::after {
+    opacity: 1;
+}
+
+

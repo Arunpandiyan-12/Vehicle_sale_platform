@@ -16,6 +16,7 @@ export class RegistrationComponent {
   username: string = '';
   email: string = '';
   password: string = '';
+  confirmPassword: string = ''; // Added confirm password field
   error: string = '';
 
   constructor(
@@ -23,9 +24,12 @@ export class RegistrationComponent {
     private authService: AuthService,
     private toastr: ToastrService
   ) {}
-  
+  login(event: Event) {
+   event.preventDefault();
+    this.router.navigate(['/signin']);
+  }
   onSubmit() {
-    if (!this.username || !this.email || !this.password) {
+    if (!this.username || !this.email || !this.password || !this.confirmPassword) {
       this.toastr.error('Please fill in all fields');
       return;
     }
@@ -40,6 +44,12 @@ export class RegistrationComponent {
     // Password validation (at least 6 characters)
     if (this.password.length < 6) {
       this.toastr.error('Password must be at least 6 characters long');
+      return;
+    }
+
+    // Confirm password validation
+    if (this.password !== this.confirmPassword) {
+      this.toastr.error('Passwords do not match');
       return;
     }
 

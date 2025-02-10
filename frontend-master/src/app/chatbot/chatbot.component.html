@@ -1,0 +1,25 @@
+<div class="chat-container">
+    <div class="chat-icon"  (click)="toggleChat()">
+        <img src="/pic-main/1.png" alt="Chat">
+    </div>
+    
+    <div class="chat-window" [ngClass]="{'open': isChatOpen}">
+        <div class="chat-header">
+            <span>Car Assistant</span>
+            <button class="close-btn" (click)="toggleChat()">&times;</button>
+        </div>
+        
+        <div class="chat-body">
+            <div *ngFor="let msg of messages" class="message" [ngClass]="{'user': msg.sender === 'user', 'bot': msg.sender === 'bot'}">
+                {{ msg.text }}
+            </div>
+            <div *ngIf="isLoading" class="typing-animation">...</div>
+        </div>
+        
+        <div class="chat-input">
+            <input [(ngModel)]="userMessage" placeholder="Type a message..." (keyup.enter)="sendMessage()" />
+            <button (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+  </div>
+  

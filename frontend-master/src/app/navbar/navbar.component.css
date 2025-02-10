@@ -29,6 +29,7 @@
 .navbar:not(.at-top) .logo span {
     color: #333;
     text-shadow: none;
+    
 }
 
 /* Remove backdrop filter from initial state */
@@ -185,15 +186,5 @@ nav a.login-btn:hover {
     color: #1a73e8;
 }
 
-/* Add margin to main content */
-:host {
-    display: block;
-    margin-top: 80px;
-}
 
-/* Update navigation links for better visibility on transparent background */
-.navbar:not(.at-top) nav a {
-    color: #333;
-    text-shadow: none;
-}
   

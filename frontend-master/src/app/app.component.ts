@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { AuthService } from './auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet, RouterModule, CommonModule, NavbarComponent, FooterComponent,FormsModule],
   template: `
     <app-navbar *ngIf="!isAdminRoute() && !isAuthPage()"></app-navbar>
     <div [class]="getMainContentClass()">
@@ -18,8 +19,8 @@ import { AuthService } from './auth.service';
   `,
   styles: [`
     .main-content {
-      margin-top: 80px;
-      min-height: calc(100vh - 80px);
+      margin-top: 0;
+      // min-height: calc(100vh - 80px);
     }
     .main-content.admin {
       margin-top: 0;

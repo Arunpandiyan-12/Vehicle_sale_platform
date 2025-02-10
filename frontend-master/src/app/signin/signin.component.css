@@ -8,19 +8,29 @@
     min-height: 100vh;
     flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
     max-width: 1200px;
-    margin: 0 auto; /* Centers the container */
+    margin: 0 auto; 
+    
 }
-
+.sigin-banner{
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), 
+    url('/login-banner.png') center/cover fixed;
+position: relative;
+}
 /* Left Side */
 .left-side {
     flex: 1;
-    background-color: white;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px;
-    border-right: 1px solid #eee; /* Light divider */
+    
+}
+.divider{
+    border-right: 1px solid white;
+    height: 400px;
+    margin-top: 15%;
 }
 
 /* Logo Section */
@@ -37,9 +47,10 @@
 
 .logo-image {
     max-height: 75px;
-    margin-bottom: 5px; /* Reduced space between logo image and text */
+    margin-bottom: 5px; 
     display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    filter: invert(100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .logo-image:hover {
@@ -50,7 +61,7 @@
 .logo span {
     font-size: 1.8rem; /* Consistent with other headings */
     font-weight: bold;
-    color: #d92128; /* Red theme for CarHub */
+    color: white; 
     text-transform: uppercase;
     animation: bounce 2s infinite;
 }
@@ -71,15 +82,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     padding: 20px;
 }
 
 /* Login Form */
 .login-form {
-    background-color: #d92128;
+    background-color: rgba(255, 255, 255, 0.2);
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 20px;
     width: 100%;
     max-width: 400px;
     color: #333;
@@ -91,7 +101,7 @@
     margin-bottom: 30px;
     font-size: 2rem; /* Adjusted to match other headings */
     font-weight: bold;
-    color: #fff; /* White text for the heading */
+    color: white; /* White text for the heading */
 }
 
 .login-form input {
@@ -99,32 +109,33 @@
     padding: 12px 15px; /* Adjusted for consistency */
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 1rem; /* Consistent font size */
     background-color: #f9f9f9;
 }
 
 .login-form input:focus {
     outline: none;
-    border-color: #d92128;
-    box-shadow: 0 0 5px rgba(217, 33, 40, 0.5);
+    border-color: gray;
+    box-shadow: 0 0 5px rgba(150, 149, 149, 0.5);
 }
 
 .login-form button {
     width: 100%;
     padding: 12px 15px;
-    background-color: #d92128;
+    background-color: black;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 1rem; /* Adjusted font size */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .login-form button:hover {
-    background-color: #b0181f;
+    background-color: white;
     transform: scale(1.05);
+    color: black;
 }
 
 /* Register Link */
