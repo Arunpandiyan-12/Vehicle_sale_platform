@@ -97,13 +97,6 @@
   margin-top: 20px;
 }
 
-.car-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-}
 
 .car-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -197,6 +190,7 @@
   margin-bottom: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
+  padding-left: 15px;
 }
 
 .car-info h4, .buyer-info h4 {
@@ -216,7 +210,7 @@
 
 .car-info i {
   width: 20px;
-  color: #3498db;
+
 }
 
 .car-specs {

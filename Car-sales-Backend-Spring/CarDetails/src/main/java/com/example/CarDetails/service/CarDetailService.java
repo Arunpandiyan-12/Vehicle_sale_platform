@@ -89,16 +89,44 @@ public CarDetail addCarDetail(CarDetail carDetail, List<MultipartFile> images) {
                 .orElseThrow(() -> new CarNotFoundException("Car not found with id: " + carId));
         carDetailRepository.delete(existingCar);
     }
-    public CarDetail updateCarDetail(Long carId, CarDetail carDetail) {
+    public CarDetail updateCarDetail(Long carId, CarDetail updatedCarDetail, List<MultipartFile> images) {
         CarDetail existingCar = carDetailRepository.findById(carId)
                 .orElseThrow(() -> new CarNotFoundException("Car not found with id: " + carId));
-
-        // Update fields
-        existingCar.setExpectedPrice(carDetail.getExpectedPrice());
-        existingCar.setDescription(carDetail.getDescription());
-
+    
+        // Allow updates to all fields except immutable ones
+        existingCar.setCarMake(updatedCarDetail.getCarMake());
+        existingCar.setCarModel(updatedCarDetail.getCarModel());
+        existingCar.setVariant(updatedCarDetail.getVariant());
+        existingCar.setManufactureYear(updatedCarDetail.getManufactureYear());
+        existingCar.setKms(updatedCarDetail.getKms());
+        existingCar.setBodyType(updatedCarDetail.getBodyType());
+        existingCar.setNumberOfOwners(updatedCarDetail.getNumberOfOwners());
+        existingCar.setFuelType(updatedCarDetail.getFuelType());
+        existingCar.setTransmissionType(updatedCarDetail.getTransmissionType());
+        existingCar.setVehicleLocation(updatedCarDetail.getVehicleLocation());
+        existingCar.setExpectedPrice(updatedCarDetail.getExpectedPrice());
+        existingCar.setDescription(updatedCarDetail.getDescription());
+        existingCar.setBiddingAllowed(updatedCarDetail.isBiddingAllowed());
+    
+        // Handle image updates (replace old images with new ones)
+        if (images != null && !images.isEmpty()) {
+            List<String> imageUrls = new ArrayList<>();
+            for (MultipartFile image : images) {
+                try {
+                    Map uploadResult = cloudinary.uploader().upload(image.getBytes(), ObjectUtils.emptyMap());
+                    String url = uploadResult.get("secure_url").toString();
+                    imageUrls.add(url);
+                } catch (IOException e) {
+                    throw new RuntimeException("Error uploading images to Cloudinary: " + e.getMessage(), e);
+                }
+            }
+            existingCar.setImageUrls(imageUrls);
+        }
+    
+        
         return carDetailRepository.save(existingCar);
     }
+    
     public List<CarDetail> getCarsByStatus(String status) {
         return carDetailRepository.findByStatus(status);
     }

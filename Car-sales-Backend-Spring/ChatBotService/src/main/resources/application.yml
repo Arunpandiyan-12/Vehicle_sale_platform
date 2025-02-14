@@ -4,5 +4,4 @@ server:
 spring:
   ai:
     openai:
-      api-key: 
       api-url: https://api.openai.com/v1/chat/completions

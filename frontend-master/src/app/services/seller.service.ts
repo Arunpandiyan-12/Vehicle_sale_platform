@@ -33,7 +33,7 @@ export interface Car {
   providedIn: 'root'
 })
 export class SellerService {
-  private apiUrl = 'http://localhost:8090/cars'; // Using cars endpoint for seller operations
+  private apiUrl = 'http://localhost:8082/cars'; // Using cars endpoint for seller operations
 
   constructor(
     private http: HttpClient,
@@ -100,8 +100,7 @@ export class SellerService {
   updateCar(carId: number, carData: FormData): Observable<CarResponse> {
     return this.http.put<CarResponse>(
       `${this.apiUrl}/${carId}/update`,
-      carData,
-      { headers: this.getHeaders() }
+      carData
     );
   }
   getCarById(id: number): Observable<Car> {

@@ -33,8 +33,8 @@ import {
   ɵɵprojectionDef,
   ɵɵsanitizeHtml
 } from "./chunk-WC22WYHV.js";
-import "./chunk-LBBSG2YE.js";
 import "./chunk-WSXI74FV.js";
+import "./chunk-LBBSG2YE.js";
 import "./chunk-NGNUV6BG.js";
 
 // node_modules/@fortawesome/fontawesome-svg-core/index.mjs

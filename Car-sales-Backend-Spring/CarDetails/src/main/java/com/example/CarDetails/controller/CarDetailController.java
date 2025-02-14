@@ -41,8 +41,12 @@ public class CarDetailController{
     }
 
     @PutMapping("/{carId}/update")
-    public ResponseEntity<CarDetail> updateCarDetail(@PathVariable Long carId, @RequestBody CarDetail carDetail) {
-        CarDetail updatedCar = carDetailService.updateCarDetail(carId, carDetail);
+    public ResponseEntity<CarDetail> updateCarDetail(
+        @PathVariable Long carId,
+        @ModelAttribute CarDetail updatedCarDetail,
+        @RequestParam(value = "images", required = false) List<MultipartFile> images
+    ) {
+        CarDetail updatedCar = carDetailService.updateCarDetail(carId, updatedCarDetail, images);
         return ResponseEntity.ok(updatedCar);
     }
 

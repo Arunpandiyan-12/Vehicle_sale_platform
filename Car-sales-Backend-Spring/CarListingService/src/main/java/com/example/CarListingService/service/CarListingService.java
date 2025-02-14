@@ -71,29 +71,29 @@ public class CarListingService {
 
     // Estimate the price of a car
     public String estimateCarPrice(CarDetailDto carDetailsDto) {
-        try {
+        
             // Construct the prompt based on car details
             String prompt = buildPrompt(carDetailsDto);
             System.out.println("Sending prompt to ChatGPT: " + prompt);
 
             // Call the AI service (ChatModel) to estimate the price
             String response = chatModel.call(prompt);
-            System.out.println("ChatGPT Response: " + response);
-
-            return response;
-        } catch (Exception e) {
-            // Log the error
-            System.out.println("Error estimating car price: " + e.getMessage());
-            return "Error estimating price"; // Handle this appropriately
-        }
+            if (response != null && !response.isEmpty()) {
+                return response.trim(); // Ensure it's a clean string
+            }
+            return "Error estimating price";
+        
     }
 
     // Build the prompt for ChatGPT
     private String buildPrompt(CarDetailDto carDetailsDto) {
         return String.format(
-                "Estimate the price of a car with the following details in one line: " +
-                        "Model: %s, Year: %d, Location: %s.", carDetailsDto.getCarMake(),
-                carDetailsDto.getCarModel(), carDetailsDto.getManufactureYear(), carDetailsDto.getVehicleLocation()
+            "Estimate the price of a car with the following details in one line: " +
+            "Make: %s, Model: %s, Year: %d, Location: %s.",
+            carDetailsDto.getCarMake(),  // %s -> Make
+            carDetailsDto.getCarModel(), // %s -> Model
+            carDetailsDto.getManufactureYear(), // %d -> Year
+            carDetailsDto.getVehicleLocation() // %s -> Location
         );
     }
 

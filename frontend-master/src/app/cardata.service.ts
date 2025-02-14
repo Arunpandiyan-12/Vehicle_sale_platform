@@ -140,7 +140,7 @@ export class CardataService {
 
   // Protected endpoints (auth required)
   fetchEstimatedCarPrice(carId: number): Observable<string> {
-    return this.http.post(`${this.apiUrl}/estimate-price/${carId}`, {}, {
+    return this.http.post(`${this.publicApiUrl}/estimate-price/${carId}`, {}, {
       headers: this.getHeaders(),
       responseType: 'text'
     });
